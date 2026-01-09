@@ -1,0 +1,16 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad9)"/>
+  <g transform="translate(120, 60)">
+    <path d="M 50 0 L 40 30 L 10 30 L 30 50 L 20 80 L 50 60 L 80 80 L 70 50 L 90 30 L 60 30 Z" fill="white" opacity="0.3"/>
+    <circle cx="50" cy="40" r="20" fill="white" opacity="0.2"/>
+    <rect x="35" y="30" width="30" height="20" rx="4" fill="white" opacity="0.15"/>
+    <text x="50" y="140" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Healthcare</text>
+  </g>
+</svg>
+

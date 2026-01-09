@@ -1,0 +1,21 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="port2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#port2)"/>
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="500" height="300" rx="16" fill="white" opacity="0.1"/>
+    <rect x="30" y="30" width="440" height="50" rx="8" fill="white" opacity="0.2"/>
+    <rect x="30" y="100" width="200" height="180" rx="8" fill="white" opacity="0.15"/>
+    <rect x="250" y="100" width="220" height="80" rx="8" fill="white" opacity="0.15"/>
+    <rect x="250" y="200" width="220" height="80" rx="8" fill="white" opacity="0.15"/>
+    <circle cx="100" cy="200" r="40" fill="white" opacity="0.2"/>
+    <path d="M 80 200 L 100 180 L 120 200 L 100 220 Z" fill="white" opacity="0.3"/>
+    <text x="250" y="450" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle" opacity="0.9">Medical SaaS</text>
+    <text x="250" y="480" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.7">Compliance-first healthcare tools</text>
+  </g>
+</svg>
+
