@@ -35,24 +35,25 @@ const Technology = () => {
   ];
 
   return (
-    <section id="technology" className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="technology" className="py-24 bg-slate-950 px-6">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Technology</span> Stack
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Technology</span> Stack
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             The right expertise at every layer of your stack.
+            Built with modern tools for speed and reliability.
           </p>
         </motion.div>
 
-        <div className="mt-12">
+        <div className="mt-8">
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
             spaceBetween={24}
@@ -65,26 +66,29 @@ const Technology = () => {
               1024: { slidesPerView: 3, spaceBetween: 24 },
               1280: { slidesPerView: 4, spaceBetween: 28 },
             }}
+            className="pb-12 !px-4"
           >
             {items.map((it, index) => (
-              <SwiperSlide key={it.title}>
+              <SwiperSlide key={it.title} className="py-8">
                 <motion.div
-                  className="h-full p-6 rounded-2xl border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 group"
+                  className="h-full p-8 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm transition-all duration-500 group relative overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -8, borderColor: "rgba(56, 189, 248, 0.3)" }}
                 >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${it.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  
                   <motion.div
-                    className={`h-14 w-14 rounded-xl bg-gradient-to-br ${it.color} text-white grid place-items-center mb-4 shadow-lg`}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${it.color} text-white grid place-items-center mb-6 shadow-lg relative z-10`}
+                    whileHover={{ rotate: 15, scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
                     {it.icon}
                   </motion.div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{it.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{it.desc}</p>
+                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-blue-200 transition-colors relative z-10">{it.title}</h3>
+                  <p className="text-slate-400 text-base leading-relaxed group-hover:text-slate-200 transition-colors relative z-10">{it.desc}</p>
                 </motion.div>
               </SwiperSlide>
             ))}

@@ -5,11 +5,13 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import portfolioEdtech from "../../assets/portfolio-edtech.svg";
-import portfolioMedical from "../../assets/portfolio-medical.svg";
-import portfolioIT from "../../assets/portfolio-it.svg";
-import portfolioFoodtech from "../../assets/portfolio-foodtech.svg";
-import portfolioMarketplace from "../../assets/portfolio-marketplace.svg";
+
+// Corrected Imports
+import portfolioEdtech from "../../assets/edtechplatform.jpg";
+import portfolioMedical from "../../assets/healthcarewebsite.jpg"; // Fixed
+import portfolioIT from "../../assets/ITConsluntant.jpg";
+import portfolioFoodtech from "../../assets/fooddeleveryapp.jpg"; // Fixed
+import portfolioMarketplace from "../../assets/EcommerceApp.jpg";
 
 const slides = [
   {
@@ -17,7 +19,6 @@ const slides = [
     tag: "EdTech",
     desc: "Learning at scale with engaging UX.",
     color: "from-violet-500 to-purple-600",
-    bgColor: "from-violet-100 to-violet-50",
     image: portfolioEdtech,
   },
   {
@@ -25,7 +26,6 @@ const slides = [
     tag: "Medical",
     desc: "Compliance-first healthcare tools.",
     color: "from-emerald-500 to-teal-600",
-    bgColor: "from-emerald-100 to-emerald-50",
     image: portfolioMedical,
   },
   {
@@ -33,7 +33,6 @@ const slides = [
     tag: "IT",
     desc: "Professional presence for IT firms.",
     color: "from-blue-500 to-cyan-600",
-    bgColor: "from-blue-100 to-blue-50",
     image: portfolioIT,
   },
   {
@@ -41,7 +40,6 @@ const slides = [
     tag: "FoodTech",
     desc: "Delightful ordering experiences.",
     color: "from-amber-500 to-orange-600",
-    bgColor: "from-amber-100 to-amber-50",
     image: portfolioFoodtech,
   },
   {
@@ -49,7 +47,6 @@ const slides = [
     tag: "Technology",
     desc: "Scale-ready marketplaces.",
     color: "from-sky-500 to-blue-600",
-    bgColor: "from-sky-100 to-sky-50",
     image: portfolioMarketplace,
   },
 ];
@@ -57,62 +54,89 @@ const slides = [
 const Portfolio = () => {
 
   return (
-    <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="portfolio" className="py-24 bg-slate-950 relative overflow-hidden">
+       {/* Background Noise/Gradient */}
+       <div className="absolute inset-0 bg-[#0f172a]" />
+       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
+       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Selected <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">work</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
-            A glimpse of what we build across industries.
-          </p>
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Work</span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-xl">
+              A showcase of our digital craftsmanship across various industries.
+            </p>
+          </div>
+          
+          {/* Custom Navigation Buttons could go here */}
         </motion.div>
 
         <div className="mt-8">
           <Swiper
             modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={0}
+            spaceBetween={30}
             slidesPerView={1}
+            breakpoints={{
+              768: {
+                 slidesPerView: 2,
+              },
+              1280: {
+                slidesPerView: 2.5,
+              }
+            }}
             autoplay={{
               delay: 4000,
               disableOnInteraction: false,
             }}
             loop={true}
             pagination={{ clickable: true, dynamicBullets: true }}
-            navigation={true}
-            className="rounded-2xl overflow-hidden"
+            className="pb-12 !px-2"
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden">
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                    <div className="mb-4">
-                      <span
-                        className={`inline-block text-sm font-medium px-4 py-2 rounded-full bg-gradient-to-r ${slide.color} text-white shadow-lg`}
-                      >
-                        {slide.tag}
-                      </span>
-                    </div>
-                    <h3 className="text-3xl md:text-5xl font-bold text-white mb-3">
+                <motion.div 
+                  className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer border border-slate-800 bg-slate-900/50 backdrop-blur-md hover:border-slate-600 transition-all duration-500 shadow-2xl"
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent opacity-90 transition-opacity duration-300" />
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 z-10">
+                    <motion.span
+                      className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 bg-gradient-to-r ${slide.color} text-white shadow-lg`}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {slide.tag}
+                    </motion.span>
+                    <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                       {slide.title}
                     </h3>
-                    <p className="text-white/90 text-lg md:text-xl max-w-2xl">
+                    <p className="text-slate-300 text-base line-clamp-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">
                       {slide.desc}
                     </p>
+                    <div className="mt-6 flex items-center gap-2 text-cyan-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      View Case Study <span className="text-lg">→</span>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>

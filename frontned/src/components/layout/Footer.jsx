@@ -1,184 +1,86 @@
 import { motion } from "framer-motion";
-import { FiMail, FiMapPin, FiPhone, FiLinkedin, FiTwitter, FiGithub, FiFacebook } from "react-icons/fi";
+import { FiMail, FiMapPin, FiArrowUpRight, FiLinkedin, FiTwitter, FiGithub, FiFacebook } from "react-icons/fi";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: <FiLinkedin className="h-5 w-5" />, href: "#", label: "LinkedIn" },
-    { icon: <FiTwitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-    { icon: <FiGithub className="h-5 w-5" />, href: "#", label: "GitHub" },
-    { icon: <FiFacebook className="h-5 w-5" />, href: "#", label: "Facebook" },
+    { icon: <FiLinkedin className="h-6 w-6" />, href: "#", label: "LinkedIn" },
+    { icon: <FiTwitter className="h-6 w-6" />, href: "#", label: "Twitter" },
+    { icon: <FiGithub className="h-6 w-6" />, href: "#", label: "GitHub" },
+    { icon: <FiFacebook className="h-6 w-6" />, href: "#", label: "Facebook" },
   ];
 
-  const handleLinkClick = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <footer className="bg-gradient-to-b from-gray-950 to-black text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-slate-950 text-white pt-24 pb-12 overflow-hidden relative">
+       {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <motion.span
-                className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white grid place-items-center font-bold text-lg shadow-lg"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-              >
-                S
-              </motion.span>
-              <span className="text-xl font-bold text-white">Skywings NextGen</span>
-            </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
-              Delivering scalable IT talent and managed services to help you win.
-            </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-10 w-10 rounded-lg bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-600 grid place-items-center transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+              Let's build <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                something epic.
+              </span>
+            </h2>
+            <a
+              href="mailto:skywingsnextgentechpvtltd@gmail.com"
+              className="inline-flex items-center gap-3 text-xl md:text-3xl font-light hover:text-cyan-400 transition-colors group break-all"
+            >
+              skywingsnextgentechpvtltd@gmail.com
+              <FiArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" />
+            </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Company</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick("#home");
-                  }}
-                  className="hover:text-white transition-colors inline-block"
+          <div className="grid md:grid-cols-3 gap-8 content-end">
+             {["Company", "Legal", "Social"].map((title, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick("#services");
-                  }}
-                  className="hover:text-white transition-colors inline-block"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#careers"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick("#careers");
-                  }}
-                  className="hover:text-white transition-colors inline-block"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick("#contact");
-                  }}
-                  className="hover:text-white transition-colors inline-block"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Legal</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#" className="hover:text-white transition-colors inline-block">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors inline-block">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors inline-block">
-                  Cookies
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Contact</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-3">
-                <FiMapPin className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <span>New Delhi, India</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <FiMail className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <a
-                  href="mailto:info@skywingsnextgen.com"
-                  className="hover:text-white transition-colors"
-                >
-                  info@skywingsnextgen.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <FiPhone className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <span>Available on request</span>
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-      </div>
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>© 2026 Skywings NextGen Tech Pvt Ltd. All rights reserved.</p>
-            <p className="text-xs">
-              Built with ❤️ for innovation
-            </p>
+                  <h4 className="text-sm font-semibold text-gray-400 mb-6 uppercase tracking-wider">{title}</h4>
+                   <ul className="space-y-4">
+                     {title === 'Company' && (
+                        <>
+                          <li><a href="#home" className="hover:text-cyan-400 transition-colors">Home</a></li>
+                          <li><a href="#services" className="hover:text-cyan-400 transition-colors">Services</a></li>
+                          <li><a href="#about" className="hover:text-cyan-400 transition-colors">About</a></li>
+                        </>
+                     )}
+                     {title === 'Legal' && (
+                        <>
+                          <li><a href="#" className="hover:text-cyan-400 transition-colors">Privacy</a></li>
+                          <li><a href="#" className="hover:text-cyan-400 transition-colors">Terms</a></li>
+                        </>
+                     )}
+                     {title === 'Social' && socialLinks.map((l) => (
+                        <li key={l.label}>
+                           <a href={l.href} className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                             {l.label}
+                           </a>
+                        </li>
+                     ))}
+                   </ul>
+                </motion.div>
+             ))}
           </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+           <p>© 2026 Skywings NextGen Tech Pvt Ltd.</p>
+           <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+              <span>All systems operational</span>
+           </div>
         </div>
       </div>
     </footer>

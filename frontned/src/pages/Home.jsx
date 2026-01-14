@@ -8,8 +8,8 @@ import Technology from "../components/home/Technology";
 import Industries from "../components/home/Industries";
 import HowItWorks from "../components/home/HowItWorks";
 import Portfolio from "../components/home/Portfolio";
-import CandidatePortal from "../components/home/CandidatePortal";
 import Contact from "../components/home/Contact";
+import OfficeLife from "../components/home/OfficeLife";
 
 const Home = () => {
   return (
@@ -22,7 +22,7 @@ const Home = () => {
       <Industries />
       <HowItWorks />
       <Portfolio />
-      <CandidatePortal />
+      <OfficeLife />
       <Contact />
       <Footer />
     </>

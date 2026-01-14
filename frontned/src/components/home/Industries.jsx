@@ -33,20 +33,21 @@ const Industries = () => {
   };
 
   return (
-    <section id="industries" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="industries" className="py-24 bg-slate-950 px-6">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Industries</span> We Serve
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Industries</span> We Serve
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             We tailor our approach to your domain.
+            Deep expertise across key sectors.
           </p>
         </motion.div>
 
@@ -58,14 +59,18 @@ const Industries = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="p-8 rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-50 h-full hover:shadow-xl transition-all duration-300">
-              <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white grid place-items-center mb-6">
-                <FiTarget className="h-7 w-7" />
+            <div className="p-8 rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-800 h-full hover:shadow-2xl hover:border-blue-500/30 transition-all duration-300 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-blue-500/20 transition-all duration-500" />
+              
+              <div className="relative z-10">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white grid place-items-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <FiTarget className="h-8 w-8" />
+                </div>
+                <h3 className="text-3xl font-bold mb-6 text-white">Why it matters</h3>
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  Different industries demand different workflows, compliance, and UX. We adapt our process to fit your context and KPIs, ensuring that the solution isn't just code, but a strategic asset.
+                </p>
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Why it matters</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Different industries demand different workflows, compliance, and UX. We adapt our process to fit your context and KPIs.
-              </p>
             </div>
           </motion.div>
           <div>
@@ -84,22 +89,27 @@ const Industries = () => {
               {items.map((it, index) => (
                 <SwiperSlide key={it.title}>
                   <motion.div
-                    className="h-full p-6 rounded-2xl border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 group"
+                    className="h-full p-8 rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-slate-600 hover:bg-slate-800/80 transition-all duration-500 group relative overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ y: -5 }}
+                    whileHover={{ x: 10, borderColor: "rgba(99, 102, 241, 0.3)" }}
                   >
-                    <motion.div
-                      className={`h-12 w-12 rounded-xl bg-gradient-to-br ${it.color} text-white grid place-items-center mb-4 shadow-lg`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {it.icon}
-                    </motion.div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900">{it.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{it.desc}</p>
+                    <div className={`absolute inset-0 bg-gradient-to-r ${it.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                    <div className="flex items-start gap-6 relative z-10">
+                      <motion.div
+                        className={`h-14 w-14 rounded-xl bg-gradient-to-br ${it.color} text-white grid place-items-center shadow-lg flex-shrink-0`}
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {it.icon}
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-200 transition-colors">{it.title}</h3>
+                        <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors text-sm md:text-base">{it.desc}</p>
+                      </div>
+                    </div>
                   </motion.div>
                 </SwiperSlide>
               ))}
