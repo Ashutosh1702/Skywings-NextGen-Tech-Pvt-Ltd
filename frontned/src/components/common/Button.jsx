@@ -14,6 +14,8 @@ const Button = ({ text, type = "primary", size = "md", onClick, className = "" }
   const variants = {
     primary:
       "bg-cyan-500 text-white hover:bg-cyan-400 focus:ring-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] border border-cyan-400/50",
+    primary3d:
+      "bg-cyan-500 text-white border-b-4 border-cyan-700 hover:bg-cyan-400 hover:border-cyan-600 active:border-b-0 active:translate-y-1 transition-all",
     secondary:
       "bg-transparent border border-gray-600 text-gray-300 hover:text-white hover:border-gray-400 hover:bg-white/5 focus:ring-gray-500",
     ghost:
@@ -22,14 +24,30 @@ const Button = ({ text, type = "primary", size = "md", onClick, className = "" }
 
   return (
     <motion.button
-      className={`${base} ${sizes[size] || sizes.md} ${variants[type] || variants.primary} ${className}`}
+      className={`${base} ${sizes[size] || sizes.md} ${variants[type] || variants.primary} ${className} relative overflow-hidden`}
       onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={type !== "primary3d" ? { scale: 1.05 } : {}}
+      whileTap={type !== "primary3d" ? { scale: 0.95 } : {}}
     >
-      <span className="relative z-10">{text}</span>
+      <span className="relative z-10 flex items-center justify-center gap-2">{text}</span>
       {type === "primary" && (
-        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <>
+        {/* Shimmer Effect */}
+        <motion.div
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
+            initial={{ x: "-150%" }}
+            animate={{ x: "150%" }}
+            transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 2,
+            ease: "easeInOut",
+            repeatDelay: 1,
+            }}
+        />
+        {/* Glow/Pulse background */}
+        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-cyan-400/20 blur-xl" />
+        </>
       )}
     </motion.button>
   );

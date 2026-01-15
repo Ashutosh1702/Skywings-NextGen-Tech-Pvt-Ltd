@@ -105,9 +105,9 @@ const Portfolio = () => {
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <motion.div 
-                  className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer border border-slate-800 bg-slate-900/50 backdrop-blur-md hover:border-slate-600 transition-all duration-500 shadow-2xl"
-                  whileHover={{ y: -10 }}
-                  transition={{ duration: 0.3 }}
+                  className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer border border-white/10 bg-slate-900/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 shadow-2xl hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)]"
+                  whileHover={{ y: -10, rotateX: 2, rotateY: 2 }}
+                  transition={{ duration: 0.4 }}
                 >
                   <div className="absolute inset-0 z-0">
                     <img
@@ -116,24 +116,34 @@ const Portfolio = () => {
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent opacity-90 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent opacity-90 transition-opacity duration-300" />
+                    {/* Glossy Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
                   
-                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 z-10">
-                    <motion.span
-                      className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 bg-gradient-to-r ${slide.color} text-white shadow-lg`}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {slide.tag}
-                    </motion.span>
-                    <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 z-10 w-full">
+                    <div className="flex justify-between items-start w-full">
+                        <motion.span
+                        className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 bg-gradient-to-r ${slide.color} text-white shadow-lg`}
+                        whileHover={{ scale: 1.05 }}
+                        >
+                        {slide.tag}
+                        </motion.span>
+                        {index < 2 && (
+                            <span className="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold uppercase rounded border border-red-500/30 animate-pulse">
+                                Featured
+                            </span>
+                        )}
+                    </div>
+                    
+                    <h3 className="text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors drop-shadow-md">
                       {slide.title}
                     </h3>
                     <p className="text-slate-300 text-base line-clamp-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 transform translate-y-4 group-hover:translate-y-0">
                       {slide.desc}
                     </p>
                     <div className="mt-6 flex items-center gap-2 text-cyan-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                      View Case Study <span className="text-lg">→</span>
+                      View Case Study <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                   </div>
                 </motion.div>

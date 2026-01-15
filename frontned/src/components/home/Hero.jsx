@@ -1,10 +1,29 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { FiArrowRight } from "react-icons/fi";
+import { FaRocket } from "react-icons/fa";
+import DiscoveryModal from "./DiscoveryModal";
+import ConsultationModal from "../common/ConsultationModal";
 
 const Hero = () => {
+  const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  // Handle flow: Discovery Selection -> Open Consultation
+  const handleDiscoveryClose = (shouldProceed, serviceId = null) => {
+      setIsDiscoveryOpen(false);
+      if (shouldProceed && serviceId) {
+          setSelectedService(serviceId);
+          setTimeout(() => setIsConsultationOpen(true), 300); // Small delay for smooth transition
+      }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-950">
+      {/* ... (background effects same as before) ... */}
+      
       {/* Dynamic Background Effects */}
       <div className="absolute inset-0 bg-[#0f172a]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
@@ -64,9 +83,27 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-             <div className="w-full sm:w-auto">
-               <Button text="Start Your Project" size="lg" className="w-full sm:w-auto shadow-lg shadow-blue-500/25" />
-             </div>
+             <motion.div 
+               className="w-full sm:w-auto"
+               animate={{ y: [-5, 5, -5] }}
+               transition={{
+                 duration: 4,
+                 repeat: Infinity,
+                 ease: "easeInOut"
+               }}
+             >
+               <Button 
+                type="premium"
+                text={
+                  <span className="flex items-center gap-2">
+                    <FaRocket className="w-5 h-5" /> Start Your Project
+                  </span>
+                } 
+                onClick={() => setIsDiscoveryOpen(true)}
+                size="lg" 
+                className="w-full sm:w-auto shadow-lg shadow-cyan-900/50" 
+               />
+             </motion.div>
              <a href="#portfolio" className="group flex items-center justify-center gap-2 text-white font-medium hover:text-cyan-400 transition-colors px-6 py-3 rounded-lg w-full sm:w-auto hover:bg-white/5">
                View our work
                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -89,6 +126,17 @@ const Hero = () => {
            </div>
         </motion.div>
       </div>
+
+      <DiscoveryModal 
+        isOpen={isDiscoveryOpen} 
+        onClose={() => handleDiscoveryClose(false)} 
+        onSelect={(id) => handleDiscoveryClose(true, id)}
+      />
+      <ConsultationModal 
+        isOpen={isConsultationOpen} 
+        onClose={() => setIsConsultationOpen(false)} 
+        selectedServiceId={selectedService}
+      />
     </section>
   );
 };
