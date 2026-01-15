@@ -65,17 +65,17 @@ const DiscoveryModal = ({ isOpen, onClose, onSelect }) => {
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-4xl bg-slate-900/50 border border-slate-700/50 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl"
+          className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-slate-900/95 border border-slate-700/50 rounded-3xl shadow-2xl backdrop-blur-xl"
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white bg-slate-800/50 hover:bg-slate-700 rounded-full transition-colors z-20"
+            className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 rounded-full transition-colors z-50"
           >
             <FiX className="w-5 h-5" />
           </button>
 
-          <div className="p-8 md:p-12 text-center">
+          <div className="p-6 md:p-12 text-center overflow-y-auto">
             <motion.h2
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
